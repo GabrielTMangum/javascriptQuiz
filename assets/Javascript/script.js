@@ -7,6 +7,8 @@ var timerDisplay = document.getElementById("timer-display")
 var whereAreWe = 0;
 var timeLeft = 75
 
+console.log(questions[whereAreWe].answer)
+
 startBtn.addEventListener("click", function(event) {
     startScrn.classList.add("d-none");
     qaScrn.classList.remove("d-none");
@@ -23,6 +25,8 @@ startBtn.addEventListener("click", function(event) {
 
         newChoice.classList.add("btn", "btn-primary", "float-left")
         newChoice.textContent = questions[whereAreWe].choices[i];
+        newChoice.setAttribute("value", questions[whereAreWe].choices[i])
+        newChoice.setAttribute("id", i)
         buttonSpacing.classList.add("row", "text-center", "p-3")
         answerList.appendChild(newChoice);
         buttonSpacing.appendChild(newChoice);
@@ -30,6 +34,31 @@ startBtn.addEventListener("click", function(event) {
     }
 
 })
+if (document.getElementById("0").value === questions[whereAreWe].answer){
+    alert("boo")
+} else if (document.getElementById("1").value === questions[whereAreWe].answer){
+    alert("boo")
+} else if (document.getElementById("2").value === questions[whereAreWe].answer){
+    alert("boo")
+} else if (document.getElementById("3").value === questions[whereAreWe].answer){
+    alert("boo")
+}
+
+function answerValidator(event){
+    event.stopPropagation();
+    alert("boo")
+//     if(newChoice.textContent === questions[whereAreWe].answer)
+//     {
+//         alert("boo")
+//         nextQuestion();
+//     } else {
+//         timeLeft -= 15;
+//     }
+}
+
+function nextQuestion () {
+
+}
 
 function startTimer () {
 
@@ -44,3 +73,6 @@ function startTimer () {
 
 }
 
+function stopTimer () {
+    clearInterval(timer);
+}
