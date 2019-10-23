@@ -8,13 +8,51 @@
     <title>Javascript Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body class="h-100">
 
-        <div class="row">
+    <!-- header -->
+    <nav class="bg-light p-3">
+        <a href="./highscore.html" class="text-left h4 ml-md-3">View Highscores</a>
+        <span class="float-right">Time: 0</span>
+    </nav>
+
+    <!-- start screen -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 text-center">
+                <h1 class="text-center">Quiz Game</h1>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt at eius impedit, in voluptate
+                    tenetur velit adipisci consectetur odio reiciendis, optio eligendi fugiat! Nisi vel expedita,
+                    dolores odit veritatis aperiam.</p>
+                <button class="btn btn-primary" id="start-button">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions and answers screen -->
+    <div class="container d-none">
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <h3>question?</h3>
+                    <ul>
+                        <li>one</li>
+                        <li>two</li>
+                        <li>three</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+    <!-- <div class="row">
             <div class="col-6">
-                <a href="./highscore.html" class="text-left h4 ml-md-3">View Highscores</a>
+
             </div>
             <div class="col-6 m-0">
                 <h4 class="text-right" id="timeLeft">Time: 75</h4>
@@ -25,13 +63,18 @@
             <div class="row">
                 <div class="col">
                     <h1 class="text-center mt-3">Coding Quiz Challenge</h1>
-                    <p class="text-center">Try answering the questions within the time limit. Time remaining on the clock determines your final score! Wrong answer incure a 15 second penalty.</p>
+                    <div class="row mt-3">
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            <p class="text-center mr-10">Try answering the questions within the time limit. Time remaining on the clock determines your final score! Wrong answer incure a 15 second penalty.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        </div> -->
 
-    
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -42,6 +85,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    
+    <script src="./assets/Javascript/questions.js"></script>
+    <script src="./assets/Javascript/script.js"></script>
 </body>
 
 </html>
