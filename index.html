@@ -14,13 +14,13 @@
 <body class="h-100">
 
     <!-- header -->
-    <nav class="bg-light p-3">
+    <nav class="bg-light p-3" >
         <a href="./highscore.html" class="text-left h4 ml-md-3">View Highscores</a>
-        <span class="float-right">Time: 0</span>
+        <span class="float-right">Time: <span id="timer-display">0</span></span>
     </nav>
 
     <!-- start screen -->
-    <div class="container">
+    <div class="container" id = "start-screen">
         <div class="row justify-content-center">
             <div class="col-sm-8 text-center">
                 <h1 class="text-center">Quiz Game</h1>
@@ -34,15 +34,11 @@
     </div>
 
     <!-- Questions and answers screen -->
-    <div class="container d-none">
+    <div class="container d-none" id="qa-screen">
             <div class="row justify-content-center">
                 <div class="col-sm-8">
-                    <h3>question?</h3>
-                    <ul>
-                        <li>one</li>
-                        <li>two</li>
-                        <li>three</li>
-                    </ul>
+                    <h3 id= "question">question?</h3>
+                    <div id="answers"></div>
                 </div>
             </div>
         </div>
