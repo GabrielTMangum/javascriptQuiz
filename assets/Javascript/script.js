@@ -11,55 +11,84 @@ var timeLeft = 75
 
 
 
-startBtn.addEventListener("click", function(event) {
+startBtn.addEventListener("click", function (event) {
     startScrn.classList.add("d-none");
     qaScrn.classList.remove("d-none");
-    
+
     startTimer();
-    
+
     questionHeading.textContent = questions[whereAreWe].title;
     answerList.innerHTML = "";
-    
+
     var answerOptions = questions[whereAreWe].choices;
-    for(var i = 0 ; i< answerOptions.length; i++) {
+
+    for (var i = 0; i < answerOptions.length; i++) {
         var newChoice = document.createElement("button");
         var buttonSpacing = document.createElement("div");
-        
-        newChoice.classList.add("btn", "btn-primary", "float-left")
+
+        newChoice.classList.add("btn", "btn-primary", "float-left", "buttons")
         newChoice.textContent = questions[whereAreWe].choices[i];
-        newChoice.setAttribute("id", i)
+        newChoice.setAttribute("dataChoice", questions[whereAreWe].choices[i])
+        newChoice.setAttribute("onclick", "answerValidator(event)")
         buttonSpacing.classList.add("row", "text-center", "p-3")
         answerList.appendChild(newChoice);
         buttonSpacing.appendChild(newChoice);
         answerList.appendChild(buttonSpacing)
-    }
-    var option1 = document.getElementById("0").textContent;
-    var option2 = document.getElementById("1").textContent;
-    var option3 = document.getElementById("2").textContent;
-    var option4 = document.getElementById("3").textContent;
 
-    console.log(option1 + option2 + option3 + option4)
-    
-    
-    answerList.addEventListener("click", function answerValidator(event){
-        event.stopPropagation();
-        
-    })
+    }
+
+
 })
 
-function startTimer () {
+function answerValidator(event) {
+    event.stopPropagation();
 
-    var timer = setInterval( function () {
+    if (event.target.attributes.dataChoice.nodeValue === questions[whereAreWe].answer) {
+        nextQuestion();
+    } else {
+        timeLeft -= 15;
+        nextQuestion();
+    }
+}
+
+function nextQuestion() {
+    whereAreWe++;
+
+    questionHeading.innerHTML = questions[whereAreWe].title;
+    answerList.innerHTML = "";
+
+    var answerOptions = questions[whereAreWe].choices;
+
+    for (var i = 0; i < answerOptions.length; i++) {
+        var newChoice = document.createElement("button");
+        var buttonSpacing = document.createElement("div");
+
+        newChoice.classList.add("btn", "btn-primary", "float-left", "buttons")
+        newChoice.textContent = questions[whereAreWe].choices[i];
+        newChoice.setAttribute("dataChoice", questions[whereAreWe].choices[i])
+        newChoice.setAttribute("onclick", "answerValidator(event)")
+        buttonSpacing.classList.add("row", "text-center", "p-3")
+        answerList.appendChild(newChoice);
+        buttonSpacing.appendChild(newChoice);
+        answerList.appendChild(buttonSpacing)
+
+    }
+
+}
+
+function startTimer() {
+
+    var timer = setInterval(function () {
         timeLeft--;
         timerDisplay.textContent = timeLeft;
 
-        if(timeLeft < 1) {
+        if (timeLeft < 1) {
             clearInterval(timer);
         }
     }, 1000)
 
 }
 
-function stopTimer () {
+function stopTimer() {
     clearInterval(timer);
 }
