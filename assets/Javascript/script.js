@@ -1,12 +1,15 @@
-var startBtn = document.getElementById("start-button")
-
-var startScrn = document.getElementById("start-screen")
-var qaScrn = document.getElementById("qa-screen")
+var startBtn = document.getElementById("start-button");
+var startScrn = document.getElementById("start-screen");
+var qaScrn = document.getElementById("qa-screen");
 var questionHeading = document.getElementById("question");
-var answerList = document.getElementById("answers")
-var timerDisplay = document.getElementById("timer-display")
+var answerList = document.getElementById("answers");
+var timerDisplay = document.getElementById("timer-display");
+var initialsScreen = document.getElementById("initials-screen");
+var finalScore = document.getElementById("final-score");
 var whereAreWe = 0;
 var timeLeft = 75
+var timer;
+var score;
 
 
 
@@ -43,11 +46,13 @@ startBtn.addEventListener("click", function (event) {
 function answerValidator(event) {
     event.stopPropagation();
 
-    if (event.target.attributes.dataChoice.nodeValue === questions[whereAreWe].answer) {
+    if (event.target.attributes.dataChoice.nodeValue === questions[whereAreWe].answer && whereAreWe < 9) {
         nextQuestion();
-    } else {
+    } else if (event.target.attributes.dataChoice.nodeValue !== questions[whereAreWe].answer && whereAreWe < 9) {
         timeLeft -= 15;
         nextQuestion();
+    } else {
+        endScreen();
     }
 }
 
@@ -76,9 +81,19 @@ function nextQuestion() {
 
 }
 
+function endScreen (){
+    qaScrn.classList.add("d-none");
+    initialsScreen.classList.remove("d-none")
+
+    stopTimer();
+
+    score = timeLeft
+    finalScore.textContent = score;
+}
+
 function startTimer() {
 
-    var timer = setInterval(function () {
+        timer = setInterval(function () {
         timeLeft--;
         timerDisplay.textContent = timeLeft;
 
