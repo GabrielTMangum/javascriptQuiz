@@ -1,3 +1,4 @@
+// These are all my arrays that I'm going to be referencing throughout my app
 var startBtn = document.getElementById("start-button");
 var startScrn = document.getElementById("start-screen");
 var qaScrn = document.getElementById("qa-screen");
@@ -14,7 +15,7 @@ var score;
 
 
 
-
+// This is my button that start the whole thing off.  It swaps the visible blocks on the page and begins the timer countdown.  It also dynamically generates the buttons for the first page.
 startBtn.addEventListener("click", function (event) {
     startScrn.classList.add("d-none");
     qaScrn.classList.remove("d-none");
@@ -26,6 +27,7 @@ startBtn.addEventListener("click", function (event) {
 
     var answerOptions = questions[whereAreWe].choices;
 
+    // This is the for loop that starts the button generation for the answers on the quiz
     for (var i = 0; i < answerOptions.length; i++) {
         var newChoice = document.createElement("button");
         var buttonSpacing = document.createElement("div");
@@ -44,6 +46,7 @@ startBtn.addEventListener("click", function (event) {
 
 })
 
+// this is the function that gets called when a button is presson.  It compares the data value of the clicked button to the answer of the question that is held in questions.js
 function answerValidator(event) {
     event.stopPropagation();
 
@@ -57,6 +60,7 @@ function answerValidator(event) {
     }
 }
 
+// this is the function that gets called after an answer is clicked. It progresses through the questions array held in questions.js
 function nextQuestion() {
     whereAreWe++;
 
@@ -65,6 +69,7 @@ function nextQuestion() {
 
     var answerOptions = questions[whereAreWe].choices;
 
+//  again this is the for loop that dynamically generates the buttons for each page.
     for (var i = 0; i < answerOptions.length; i++) {
         var newChoice = document.createElement("button");
         var buttonSpacing = document.createElement("div");
@@ -82,6 +87,7 @@ function nextQuestion() {
 
 }
 
+// this is the fuction that gets called once there are no more quesitons to answer that makes the end screen the visible block on the page.
 function endScreen (){
     if(timeLeft < 0){
         timeLeft = 0
@@ -96,6 +102,7 @@ function endScreen (){
     finalScore.textContent = score;
 }
 
+// This is the function that stores the user's initials so that we can put it onto the highscores screen as well as store it locally.
 function nameStorage() {
     name = document.getElementById("initials").value
     
@@ -114,6 +121,7 @@ function nameStorage() {
     console.log("hi")
 }
 
+// this is the function that starts the timer countdown and stops it once it hits 0
 function startTimer() {
 
         timer = setInterval(function () {
@@ -128,8 +136,7 @@ function startTimer() {
 
 }
 
-
-
+// this is the function that stops the timer once the score hits 0 or the questions have all been answered.
 function stopTimer() {
     clearInterval(timer);
 }

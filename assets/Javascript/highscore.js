@@ -1,5 +1,6 @@
 var highscoresList = document.getElementById("highscores");
 
+// this is my function that I call when I want to display the localy stored scores and name associated with them.
 function scoresList() {
     var highscores = JSON.parse(localStorage.getItem("score"))
     if (highscores=== null) {
@@ -20,6 +21,7 @@ function redirect() {
     location.href = "index.html"
 }
 
+// this is the function that clears the local storage when the user clicks the 'clear highscores' button.
 function clearHighscores() {
     localStorage.clear();
     scoresList();

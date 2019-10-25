@@ -1,3 +1,5 @@
+// this is the array of questions, choices, and answers for the quiz
+
 var questions = [
     {
       title: "Commonly used data types DO NOT include:",
